@@ -21,5 +21,7 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password' => bcrypt('12345678'),
             ]);
+
+        
     }
 }

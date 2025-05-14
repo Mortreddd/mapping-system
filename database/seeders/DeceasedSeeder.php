@@ -15,15 +15,6 @@ class DeceasedSeeder extends Seeder
     public function run(): void
     {
 
-        Deceased::factory()
-            ->count(10)
-            ->create(fn () => [
-                'grave_id' => rand(1, 240),
-                'date_of_birth' => now()->subYears(rand(20, 80))->toDateString(), // Only date
-                'date_of_death' => now()->subYears(rand(0, 20))->toDateString(), 
-                'full_name' => fake()->name(),
-                'created_at' => now(),
-                'updated_at' => now()
-            ]);
+       
     }
 }
