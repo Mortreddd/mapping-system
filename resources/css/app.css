@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@source "../views";
+
+@theme {
+    --color-primary-800: rgb(14, 52, 20);
+}
