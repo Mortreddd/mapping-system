@@ -55,30 +55,32 @@ class DashboardController extends Controller
 
     public function update(Request $request, $id) 
     {
-    
         $record = Deceased::with(['grave'])->findOrFail($id);
         $newGrave = Grave::where('grave_number', $request->only('grave_number'))->first();
         $oldGrave = Grave::findOrFail($record->grave_id);
 
-
-        $is_exists = Deceased::where('grave_id', operator: $newGrave->id)
-            ->where('id', '!=', $record->id) // Exclude the current record
+        $is_exists = Deceased::where('grave_id', $newGrave->id)
+            ->where('id', '!=', $record->id)
             ->exists();
-            
+
         if ($is_exists) {
             return back()->withErrors(['grave_number' => 'This plot number is already occupied.'])->withInput();
         }
 
+        // Update grave statuses correctly
         $oldGrave->update(['status' => 'available']);
         $newGrave->update(['status' => 'occupied']);
-        $record->grave->update(['status' => 'occupied']);
+
+        // Don't update the old grave again to 'occupied'
+        // $record->grave->update(['status' => 'occupied']); ❌ REMOVE THIS
+
         $record->update([
             'full_name' => $request->input('full_name'),
             'grave_id' => $newGrave->id,
             'date_of_birth' => $request->input('born_date'),
             'date_of_death' => $request->input('died_on'),
         ]);
-        
+
         return redirect()->route('admin.dashboard')->with('success', 'Deceased record updated successfully.');
     }
 }

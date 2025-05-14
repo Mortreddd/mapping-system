@@ -35,7 +35,7 @@ class DeceasedSeeder extends Seeder
             'date_of_death' => '2020-01-01',
         ]);
         Deceased::create([
-            'full_name' => '',
+            'full_name' => 'Raizza Beth Dacalos',
             'grave_id' => 90,
             'date_of_birth' => '1980-01-01',
             'date_of_death' => '2020-01-01',
