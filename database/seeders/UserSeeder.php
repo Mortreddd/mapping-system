@@ -14,14 +14,11 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(count: 1)
-            ->create(fn() => [
-                'full_name' => 'Admin',
-                'email' => 'admin@example.com',
-                'email_verified_at' => now(),
-                'password' => bcrypt('12345678'),
-            ]);
-
-        
+        User::create([
+            'full_name' => 'Admin',
+            'email' => 'admin@example.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('12345678'),
+        ]);
     }
 }

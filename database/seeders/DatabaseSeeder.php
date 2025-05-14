@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Kreait\Laravel\Firebase\Facades\Firebase;
 
 class DatabaseSeeder extends Seeder
 {
