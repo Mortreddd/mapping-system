@@ -24,9 +24,9 @@
         </p>
     </section>
     <section class="bg-white flex py-10 flex-col items-center w-full gap-5 px-20">
-        <h1 class="text-gray-800 font-sans font-bold text-4xl">St.Francis</h1>
+        <h1 class="text-gray-800 font-sans font-bold text-4xl">Baliti Catholic Cemetery</h1>
         <p class="text-md font-sans font-thin text-gray-700">
-            The Cemetery Mapping Information System of San Pablo City Memorial park is to provide a platform for the
+            The Baliti Catholic Cemetery aim to provide a platform for the
             user
             to quickly locate and less effort on finding their relative graves a platform for the personnel to access,
             update,

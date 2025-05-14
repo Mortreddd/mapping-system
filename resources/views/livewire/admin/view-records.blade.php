@@ -38,7 +38,7 @@
                     <td class="py-2 border px-3 text-center">{{ $record->date_of_death->format('Y-m-d') }}</td>
                     <td class="py-2 px-3 border gap-2 flex justify-center">
                         <x-form.button variant="warning" class="">
-                            <a href="{{ route('admin.records.show', $record->id) }}">Edit</a>
+                            <a href="{{ route('admin.records.show', ['id' => $record->id]) }}">Edit</a>
                         </x-form.button>
                         <x-form.button variant="danger" wire:click="deleteRecord({{ $record->id }})"
                             wire:loading.attr="disabled">

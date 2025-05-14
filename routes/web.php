@@ -8,7 +8,8 @@ use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 
 // Public pages
-Route::middleware( ['guest'])->group(function() {
+
+Route::group([], function() {
 
     Route::get('/', fn () => view('pages.home'))->name('home');
     Route::get('/map', fn () => view('pages.map'))->name('map');
@@ -30,10 +31,10 @@ Route::middleware( ['guest'])->group(function() {
 
 // Admin dashboard (requires authentication)
 Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::get('/records/new', [DashboardController::class, 'insert'])->name('admin.records.new');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/records/{id}', [DashboardController::class, 'show'])->name('admin.records.show');
     Route::put('/records/{id}', [DashboardController::class, 'update'])->name('admin.records.update');
-    Route::get('/records/new', [DashboardController::class, 'insert'])->name('admin.records.new');
     Route::post('/records/new', [DashboardController::class, 'store'])->name('admin.records.store');
 
     Route::get("/reservations", [ReservationController::class, 'index'])->name('admin.reservations.index');

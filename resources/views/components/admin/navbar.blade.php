@@ -13,7 +13,7 @@
                 class="text-gray-100 hover:text-gray-300 duration-200 ease-in-out transition-all text-xl cursor-pointer">Reservations</a>
             <a href="{{ route('admin.feedbacks') }}"
                 class="text-gray-100 hover:text-gray-300 duration-200 ease-in-out transition-all text-xl cursor-pointer">Feedbacks</a>
-            <a href="{{ route('about') }}"
+            <a href="{{ route('map') }}"
                 class="text-gray-100 hover:text-gray-300 duration-200 ease-in-out transition-all text-xl cursor-pointer">Location</a>
         </div>
         <form action="{{ route('admin.logout') }}" method="POST">

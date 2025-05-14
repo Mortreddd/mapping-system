@@ -13,9 +13,9 @@ class ViewRecords extends Component
     public $perPage = 10;
     public $search = '';
 
-    public function deleteRecord($recordId)
+    public function deleteRecord($id)
     {
-        $record = Deceased::find($recordId);
+        $record = Deceased::find(id: $id);
         if ($record) {
             $record->grave->update(['status' => 'available']);
             $record->delete();
