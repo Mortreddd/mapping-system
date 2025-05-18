@@ -19,12 +19,16 @@
         <table class="w-full font-sans text-left rtl:text-right rounded">
             <thead class="text-md border-gray-400 font-bold uppercase font-sans">
                 <tr>
-                    <td class="py-2 border text-center">ID</td>
-                    <td class="py-2 border text-center">Name</td>
-                    <td class="py-2 border text-center">Plot Number</td>
-                    <td class="py-2 border text-center">Born Date</td>
-                    <td class="py-2 border text-center">Died On</td>
-                    <td class="py-2 border text-center">Option</td>
+                    <td class="py-2 border text-center text-sm font-semibold">ID</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Name</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Plot Number</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Gender</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Address</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Date of Birth</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Date of Death</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Age</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Cause Of Death</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Options</td>
                 </tr>
             </thead>
             <tbody class="text-md font-semibld font-sans" wire:loading.class="opacity-50">
@@ -34,9 +38,14 @@
                     <td class="py-2 border px-3">{{ $record->id }}</td>
                     <td class="py-2 border px-3">{{ $record->full_name }}</td>
                     <td class="py-2 border px-3 text-center font-bold">{{ $record->grave->grave_number }}</td>
+                    <td class="py-2 border px-3 text-center font-bold">{{ $record->gender === 'M' ? "Male" : "Female" }}
+                    </td>
+                    <td class="py-2 border px-3 text-center font-bold">{{ $record->address }}</td>
                     <td class="py-2 border px-3 text-center">{{ $record->date_of_birth->format('Y-m-d') }}</td>
                     <td class="py-2 border px-3 text-center">{{ $record->date_of_death->format('Y-m-d') }}</td>
-                    <td class="py-2 px-3 border gap-2 flex justify-center">
+                    <td class="py-2 border px-3 text-center">{{ $record->age }}</td>
+                    <td class="py-2 border px-3">{{ $record->cause_of_death ?? 'N/A' }}</td>
+                    <td class="py-2 px-3 border-r gap-2 flex justify-center">
                         <x-form.button variant="warning" class="">
                             <a href="{{ route('admin.records.show', ['id' => $record->id]) }}">Edit</a>
                         </x-form.button>
@@ -51,12 +60,16 @@
             </tbody>
             <tfoot class="text-md border-gray-400 font-bold uppercase font-sans">
                 <tr>
-                    <td class="py-2 border text-center">ID</td>
-                    <td class="py-2 border text-center">Name</td>
-                    <td class="py-2 border text-center">Plot Number</td>
-                    <td class="py-2 border text-center">Born Date</td>
-                    <td class="py-2 border text-center">Died On</td>
-                    <td class="py-2 border text-center">Option</td>
+                    <td class="py-2 border text-center text-sm font-semibold">ID</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Name</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Plot Number</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Gender</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Address</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Date of Birth</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Date of Death</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Age</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Cause Of Death</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Options</td>
                 </tr>
             </tfoot>
         </table>

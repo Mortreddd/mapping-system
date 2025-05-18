@@ -40,8 +40,12 @@ class DashboardController extends Controller
         Deceased::create([
             'full_name' => $request->validated('full_name'),
             'grave_id' => $grave->id,
-            'date_of_birth' => $request->validated('born_date'),
-            'date_of_death' => $request->validated('died_on'),
+            'age' => $request->validated('age'),
+            'address' => $request->validated('address'),
+            'gender' => $request->validated('gender'),
+            'cause_of_death' => $request->validated('cause_of_death'),
+            'date_of_birth' => $request->validated('date_of_birth'),
+            'date_of_death' => $request->validated('date_of_death'),
         ]);
 
         return redirect()->route('admin.dashboard')->with('success', 'Deceased record added successfully.');

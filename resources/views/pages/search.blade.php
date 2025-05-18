@@ -5,7 +5,7 @@
 @section('content')
 
 
-<div class="container mx-auto">
+<div class="w-full mx-auto">
     <div class="h-[80vh] bg-white w-full">
         <x-navbar />
         <div class="relative min-h-full h-fit px-20 w-full">

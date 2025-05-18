@@ -54,6 +54,7 @@ class ReservationPreview extends Component
                 'full_name' => $reservation->deceased_full_name,
                 'date_of_birth' => $reservation->date_of_birth,
                 'date_of_death' => $reservation->date_of_death,
+                
                 'grave_id' => $reservation->grave_id,
             ]);
             $reservation->delete();

@@ -7,7 +7,34 @@
         <span class="text-red-500 text-sm">{{ $message }}</span>
         @enderror
         <label for="full_name" class="block font-sans text-xl">Full Name</label>
-        <x-form.input type="text" id="full_name" name="full_name"
+        <x-form.input type="text" id="full_name" name="full_name" value="{{ old('full_name') }}"
+            class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm" />
+    </div>
+    <div class="mt-3 w-full">
+        @error('gender')
+        <span class="text-red-500 text-sm">{{ $message }}</span>
+        @enderror
+        <label for="gender" class="block font-sans text-xl">Gender</label>
+        <x-form.select id="gender" name="gender" class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm">
+            <x-form.option value="" selected disabled>Select Gender</x-form.option>
+            <x-form.option value="M">Male</x-form.option>
+            <x-form.option value="F">Female</x-form.option>
+        </x-form.select>
+    </div>
+    <div class="mt-3 w-full">
+        @error('age')
+        <span class="text-red-500 text-sm">{{ $message }}</span>
+        @enderror
+        <label for="age" class="block font-sans text-xl">Age</label>
+        <x-form.input type="number" id="age" name="age"
+            class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm" />
+    </div>
+    <div class="mt-3 w-full">
+        @error('address')
+        <span class="text-red-500 text-sm">{{ $message }}</span>
+        @enderror
+        <label for="address" class="block font-sans text-xl">Address</label>
+        <x-form.input type="text" id="address" name="address"
             class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm" />
     </div>
     <div class="w-full mt-3">
@@ -19,23 +46,31 @@
             class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm" />
     </div>
     <div class="w-full mt-3">
-        @error('bord_date')
+        @error('date_of_birth')
         <span class="text-red-500 text-sm">{{ $message }}</span>
         @enderror
-        <label for="born_date" class="block font-sans text-xl">Born Date</label>
-        <x-form.input type="date" id="born_date" name="born_date"
+        <label for="date_of_birth" class="block font-sans text-xl">Date of Birth</label>
+        <x-form.input type="date" id="date_of_birth" name="date_of_birth"
             class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm" />
     </div>
 
     <div class="w-full mt-3">
-        @error('died_on')
+        @error('date_of_death')
         <span class="text-red-500 text-sm">{{ $message }}</span>
         @enderror
-        <label for="died_on" class="block font-sans text-xl">Died On</label>
-        <x-form.input type="date" id="died_on" name="died_on"
+        <label for="date_of_death" class="block font-sans text-xl">Date of Death</label>
+        <x-form.input type="date" id="date_of_death" name="date_of_death"
             class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm" />
     </div>
 
+    <div class="mt-3 w-full">
+        @error('cause_of_death')
+        <span class="text-red-500 text-sm">{{ $message }}</span>
+        @enderror
+        <label for="cause_of_death" class="block font-sans text-xl">Cause of Death</label>
+        <x-form.input type="text" id="cause_of_death" name="cause_of_death"
+            class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm" />
+    </div>
     <div class="w-full mt-5 flex justify-start items-center">
         <x-form.button type="submit" variant="primary" class="w-fit">
             Save

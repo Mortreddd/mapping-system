@@ -29,12 +29,17 @@ class ReservationController extends Controller
             $reservation = Reservation::create([
                 'full_name' => $validated['full_name'],
                 'email' => $validated['email'],
+                'contact_number' => $validated['contact_number'],
+                'relationship' => $validated['relationship'],
                 'grave_id' => $grave->id,
                 'date_of_birth' => $validated['date_of_birth'],
                 'date_of_death' => $validated['date_of_death'],
                 'deceased_full_name' => $validated['deceased_full_name'],
+                'age' => $validated['age'],
+                'address' => $validated['address'],
+                'gender' => $validated['gender'],
+                'cause_of_death' => $validated['cause_of_death']
             ]);
-            
 
             $grave->update(['status' => 'reserved']);
 
@@ -46,7 +51,8 @@ class ReservationController extends Controller
                 ->with('error', 'Error creating reservation: '.$e->getMessage())
                 ->withInput();
         }
-}
+
+    }
 
 
     public function successReservation()

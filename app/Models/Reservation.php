@@ -11,14 +11,24 @@ class Reservation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'deceased_id',
         'grave_id',
         'full_name',
         'email',
+        'contact_number',
+        'relationship',
+        'deceased_full_name',
+        'status',
         'date_of_birth',
         'date_of_death',
-        'deceased_full_name',
-        'status'
+        'cause_of_death',
+        'gender',
+        'age',
+        'address',
+    ];
+
+    protected $casts = [
+        'date_of_birth' => 'date',
+        'date_of_death' => 'date',
     ];
 
     public function grave()

@@ -14,6 +14,10 @@ class Deceased extends Model
         'full_name',
         'date_of_birth',
         'date_of_death',
+        'cause_of_death',
+        'gender',
+        'age',
+        'address',
         'grave_id',
         'created_at',
         'updated_at'

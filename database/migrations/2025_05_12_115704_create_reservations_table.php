@@ -18,9 +18,14 @@ return new class extends Migration
             $table->foreignIdFor(Grave::class)->constrained()->onDelete('cascade');
             $table->string('full_name');
             $table->string('email');
+            $table->string('contact_number');
+            $table->string('relationship');
             $table->date('date_of_birth');
             $table->date('date_of_death');
             $table->string('deceased_full_name');
+            $table->integer('age');
+            $table->string('address');
+            $table->enum('gender', ['M', 'F']);
             $table->enum('status', ['pending', 'confirmed', 'cancelled'])->default('pending');
             $table->timestamps();
         });

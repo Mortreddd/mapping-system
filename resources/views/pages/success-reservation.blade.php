@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="container mx-auto">
+<div class="w-full mx-auto">
     <div class="h-[70vh] bg-white w-full">
         <x-navbar />
         <div class="relative min-h-full h-full px-20 mb-20 w-full">

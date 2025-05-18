@@ -3,7 +3,7 @@
 @section('title', $record->full_name . ' - Edit Record')
 
 @section('content')
-<div class="container mx-auto">
+<div class="w-full mx-auto">
     <div class="min-h-screen w-full bg-green-100">
         <x-admin.navbar />
         <div class="relative px-20 w-full">

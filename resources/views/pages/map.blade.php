@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="container mx-auto">
+<div class="w-full mx-auto">
     <section class="w-full">
         <x-navbar />
         <div class="w-full bg-gray-300 min-h-[80vh] flex items-center justify-center">

@@ -1,41 +1,68 @@
 {{-- Be like water. --}}
-<div class="grid [grid-template-columns:repeat(18,minmax(0,1fr))] w-[80vw]">
-    @foreach ($graves as $grave)
-    <div
-        class="group px-2 relative py-1 border cursor-pointer transition-all duration-200 ease-in-out border-black text-center slot slot-{{$grave->grave_number}}
-            {{ $grave->status === 'occupied' ? 'bg-red-600 hover:bg-red-700 text-white' : ($grave->status !== 'reserved' ? 'bg-green-600 hover:bg-green-700 text-white' : 'bg-gray-50 hover:bg-gray-100 text-black') }}">
 
-        <div id="slot-{{$grave->grave_number}}"
-            class="absolute hidden bottom-5 rounded-full text-nowrap border border-black text-gray-800 px-3 py-1 w-fit h-fit bg-gray-200 z-10 -translate-x-3 inset-x-0">
-            {{ $grave->status }}
-        </div>
-        <a href="/graves/{{$grave->id}}">
-            {{ $grave->grave_number }}
-        </a>
-    </div>
-    @endforeach
+<div class="w-full relative">
+    <div id="graveMap" style="height: 600px;"></div>
+
 </div>
 
 
 @push('scripts')
-
 <script>
-    document.querySelectorAll(".slot").forEach((slot) => {
-    const graveNumber = slot.className.match(/slot-(\d+)/)?.[1]; // Extract grave number from class
+    const map = L.map('graveMap', {
+        minZoom: 15,
+        maxZoom: 22,
+        zoomControl: true
+    }).setView([15.107154, 120.624243], 20);
 
-    if (!graveNumber) return;
+    // Define different colored icons for each status
+    const icons = {
+        reserved: new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png',
+            shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        }),
+        occupied: new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+            shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        }),
+        available: new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
+            shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        })
+    };
 
-    const popover = document.getElementById("slot-" + graveNumber);
+    const graves = {!! $graves !!};
+    graves.forEach(grave => {
+    if (grave.latitude && grave.longitude) {
+        const icon = icons[grave.status.toLowerCase()] || icons.available;
 
-    slot.addEventListener("mouseenter", () => {
-        popover?.classList.remove("hidden");
-        popover?.classList.add("block");
-    });
+        const marker = L.marker([grave.latitude, grave.longitude], { icon }).addTo(map);
 
-    slot.addEventListener("mouseleave", () => {
-        popover?.classList.remove("block");
-        popover?.classList.add("hidden");
-    });
+        const popupContent = `
+            <div style="cursor: pointer;" onclick="window.location.href='/graves/${grave.id}'">
+                <b>Grave #${grave.grave_number}</b><br>Status: ${grave.status}<br>
+                <small><u>View Details</u></small>
+            </div>
+        `;
+
+        marker.bindPopup(popupContent);
+    }
 });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
 </script>
+
 @endpush

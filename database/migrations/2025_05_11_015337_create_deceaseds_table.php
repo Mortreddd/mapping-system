@@ -15,6 +15,10 @@ return new class extends Migration
         Schema::create('deceaseds', function (Blueprint $table) {
             $table->id();
             $table->string('full_name');
+            $table->enum('gender', ['M', 'F']);
+            $table->string('cause_of_death');
+            $table->string('address');
+            $table->integer('age');
             $table->date('date_of_birth')->nullable();
             $table->date('date_of_death')->nullable();
             $table->foreignIdFor(Grave::class)

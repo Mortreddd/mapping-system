@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<div class="container mx-auto">
+<div class="w-full mx-auto">
     <section style="background-image: url('{{ asset('background.jpg') }}')"
         class="w-full h-screen flex items-center justify-center bg-cover bg-center">
 

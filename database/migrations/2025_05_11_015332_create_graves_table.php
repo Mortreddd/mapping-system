@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('graves', function (Blueprint $table) {
             $table->id();
             $table->integer('grave_number')->unique();
+            $table->decimal('latitude', 10, 8);
+            $table->decimal('longitude', 11, 8);
             $table->enum('status', ['available', 'occupied', 'reserved'])->default('available');
             $table->timestamps();
         });

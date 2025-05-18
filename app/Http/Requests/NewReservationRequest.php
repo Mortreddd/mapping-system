@@ -18,6 +18,8 @@ class NewReservationRequest extends FormRequest
         return [
             'full_name' => 'required|max:255',
             'email' => 'required|email|max:255',
+            'contact_number' => 'required',
+            'relationship' => 'required',
             'deceased_full_name' => 'required|max:255',
             'grave_number' => [
                 'required',
@@ -32,7 +34,11 @@ class NewReservationRequest extends FormRequest
                 }
             ],
             'date_of_birth' => 'required|date|before:date_of_death',
-            'date_of_death' => 'required|date|after:date_of_birth'
+            'date_of_death' => 'required|date|after:date_of_birth',
+            'cause_of_death' => 'required|string',
+            'age' => 'required|numeric|min:1|max:150',
+            'address' => 'required|string',
+            'gender' => 'in:M,F|required'
         ];
     }
 }

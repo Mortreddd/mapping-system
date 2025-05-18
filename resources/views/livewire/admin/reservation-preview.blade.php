@@ -28,15 +28,21 @@
     </div>
     <div class="relative overflow-x-auto mt-4">
         <table class="w-full font-sans text-left rtl:text-right rounded">
-            <thead class="text-md border-gray-400 font-bold uppercase font-sans">
+            <thead class="text-sm border-gray-400 font-bold uppercase font-sans">
                 <tr>
-                    <td class="py-2 border text-center">ID</td>
-                    <td class="py-2 border text-center">Name</td>
-                    <td class="py-2 border text-center">Email</td>
-                    <td class="py-2 border text-center">Plot Number</td>
-                    <td class="py-2 border text-center">Deceased Name</td>
-                    <td class="py-2 border text-center">Status</td>
-                    <td class="py-2 border text-center">Options</td>
+                    <td class="py-2 border text-center text-sm font-semibold">ID</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Name</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Email</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Plot Number</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Deceased Name</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Gender</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Deceased Address</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Date of Birth</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Date of Death</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Deceased Age</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Cause Of Death</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Status</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Options</td>
                 </tr>
             </thead>
             <tbody class="text-md font-semibld font-sans" wire:loading.class="opacity-50">
@@ -48,15 +54,24 @@
                     <td class="py-2 border px-3">{{ $reservation->email }}</td>
                     <td class="py-2 border px-3 text-center font-bold">{{ $reservation->grave->grave_number }}</td>
                     <td class="py-2 border px-3 text-center font-bold">{{ $reservation->deceased_full_name }}</td>
+                    <td class="py-2 border px-3 text-center font-bold">{{ $reservation->gender === 'M' ? "Male" :
+                        "Female" }}</td>
+                    <td class="py-2 border px-3 font-bold">{{ $reservation->address }}</td>
+                    <td class="py-2 border px-3 font-bold">{{ $reservation->date_of_birth->format('Y-m-d') }}
+                    </td>
+                    <td class="py-2 border px-3 font-bold">{{ $reservation->date_of_death->format('Y-m-d') }}
+                    </td>
+                    <td class="py-2 border px-3 font-bold text-center">{{ $reservation->age }}</td>
+                    <td class="py-2 px-3 border">{{ $reservation->cause_of_death ?? 'N/A' }}</td>
                     <td class="py-2 border px-3 text-center">
-                        <span class="px-2 py-1 rounded-full text-xs 
+                        <x-badge class="rounded-full text-xs 
         @if($reservation->status === 'confirmed') bg-green-100 text-green-800
         @elseif($reservation->status === 'cancelled') bg-red-100 text-red-800
         @else bg-yellow-100 text-yellow-800 @endif">
                             {{ ucfirst($reservation->status ?? 'pending') }}
-                        </span>
+                        </x-badge>
                     </td>
-                    <td class="py-2 px-3 border gap-2 flex justify-center">
+                    <td class="py-2 px-3 flex-1 items-center border-r gap-2 flex justify-center">
                         <x-form.button variant="success" wire:click="acceptReservation({{ $reservation->id }})"
                             wire:loading.attr="disabled">
                             <span wire:loading.remove
@@ -78,13 +93,19 @@
             </tbody>
             <tfoot class="text-md border-gray-400 font-bold uppercase font-sans">
                 <tr>
-                    <td class="py-2 border text-center">ID</td>`
-                    <td class="py-2 border text-center">Name</td>
-                    <td class="py-2 border text-center">Email</td>
-                    <td class="py-2 border text-center">Plot Number</td>
-                    <td class="py-2 border text-center">Deceased Name</td>
-                    <td class="py-2 border text-center">Status</td>
-                    <td class="py-2 border text-center">Options</td>
+                    <td class="py-2 border text-center text-sm font-semibold">ID</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Name</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Email</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Plot Number</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Deceased Name</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Gender</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Deceased Address</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Date of Birth</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Date of Death</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Deceased Age</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Cause Of Death</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Status</td>
+                    <td class="py-2 border text-center text-sm font-semibold">Options</td>
                 </tr>
             </tfoot>
         </table>

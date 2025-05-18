@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="container mx-auto">
+<div class="ww-full mx-auto">
     <h1 class="text-3xl font-sans w-full text-center font-bold">Grave - {{ $grave->grave_number }}</h1>
     <div class="h-screen bg-gray-200 w-full flex justify-center items-center">
         <div class="w-96 bg-white  rounded border space-y-5 p-9 shadow-md">

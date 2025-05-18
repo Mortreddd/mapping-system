@@ -15,6 +15,8 @@ Route::group([], function() {
     Route::get('/map', fn () => view('pages.map'))->name('map');
     Route::get('/about', fn () => view('pages.about'))->name('about');
     Route::get('/search', fn() => view('pages.search'))->name('search');
+    Route::get('/pricing', fn() => view('pages.pricing'))->name('pricing');
+    Route::get('/#contact', fn () => view('pages.contact'))->name('contact');
     Route::get('/reservations/new', [ReservationController::class, 'createReservation'])->name('reservations.new');
     Route::post('/reservations/new', [ReservationController::class, 'storeReservation'])->name('reservations.store');
     Route::get('/reservations/success', [ReservationController::class, 'successReservation'])->name('reservations.success');

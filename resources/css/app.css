@@ -4,3 +4,9 @@
 @theme {
     --color-primary-800: rgb(14, 52, 20);
 }
+
+@layer {
+    html {
+        scroll-behavior: smooth;
+    }
+}

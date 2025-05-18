@@ -8,15 +8,15 @@
     <title>@yield('title', "Cemetery Mapping")</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @stack('styles')
     @livewireStyles
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 
-<body class="bg-white antialiased w-full min-vh-100">
+<body class="bg-white antialiased w-full min-vh-100 scroll-p-10 scroll-smooth">
     @yield('content')
     @livewireScripts
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     @stack('scripts')
 
 </body>
