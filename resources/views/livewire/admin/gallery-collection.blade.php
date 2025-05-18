@@ -3,7 +3,7 @@
     @forelse ($galleries as $gallery)
     <article class="flex flex-col items-center w-fit">
 
-        <img src="{{ asset('storage/'.$gallery->image) }}" alt="Gallery Image"
+        <img src="{{ asset($gallery->image) }}" alt="Gallery Image"
             class="object-contain h-72 max-w-96 object-center mask-add rounded-lg" />
         <x-form.button wire:loading disabled variant="danger" class="mt-3">
             <p class="text-md text-white">
