@@ -19,6 +19,8 @@
         <article class="p-3 bg-gray-200 rounded-lg inline-block w-fit h-fit mt-3">
             <h3 class="text-gray-600 bg-transparent">Name: {{ $result->deceased->full_name }}</h3>
             <h3 class="text-gray-600 bg-transparent">Plot: {{ $result->grave_number }}</h3>
+            <h3 class="text-gray-600 bg-transparent">Address: {{ $result->deceased->address }}</h3>
+            <h3 class="text-gray-600 bg-transparent">Age: {{ $result->deceased->age }}</h3>
             <h3 class="text-gray-600 bg-transparent">Date of Birth: {{
                 \Carbon\Carbon::parse($result->deceased->date_of_birth)->format('Y-m-d') }}</h3>
             <h3 class="text-gray-600 bg-transparent">Date of Deceased: {{

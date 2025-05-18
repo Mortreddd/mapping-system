@@ -51,10 +51,7 @@
     </section>
     {{-- Gallery Section --}}
 
-    <section class="w-full bg-white py-5 my-10 px-20 flex flex-col items-center">
-        <h1 class="block text-center text-gray-800 font-sans font-bold text-4xl mb-10">Gallery</h1>
-        <livewire:gallery-list />
-    </section>
+    <livewire:gallery-list />
 
     <section class="bg-white py-5 my-10 w-full px-20 flex items-center flex-col">
         <h1 class="block text-center text-gray-800 font-sans font-bold text-4xl">Why Choose Baliti Catholic Cemetery
