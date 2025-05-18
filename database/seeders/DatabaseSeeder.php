@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             GraveSeeder::class,
             DeceasedSeeder::class,
+            GallerySeeder::class
         ]);
         
     }

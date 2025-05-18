@@ -49,49 +49,69 @@
             traditions and offering compassionate service to grieving families.
         </p>
     </section>
-    <section class="bg-white py-5 my-10 w-full px-20 flex justify-center flex-col">
+    {{-- Gallery Section --}}
+
+    <section class="w-full bg-white py-5 my-10 px-20 flex flex-col items-center">
+        <h1 class="block text-center text-gray-800 font-sans font-bold text-4xl mb-10">Gallery</h1>
+        <livewire:gallery-list />
+    </section>
+
+    <section class="bg-white py-5 my-10 w-full px-20 flex items-center flex-col">
         <h1 class="block text-center text-gray-800 font-sans font-bold text-4xl">Why Choose Baliti Catholic Cemetery
         </h1>
-        <p class="text-xl font-thin block mt-5 font-sans text-gray-700">
-            <strong class="font-semibold">Catholic Values:</strong> Operated under the guidance of the local parish with
-            spiritual services
-            available
-        </p>
-        <p class="text-xl font-thin block mt-5 font-sans text-gray-700">
-            <strong class="font-semibold">Peaceful Environment:</strong> Landscaped gardens and prayer spaces ideal for
-            reflection and
-            remembrance.
-        </p>
-        <p class="text-xl font-thin block mt-5 font-sans text-gray-700">
-            <strong class="font-semibold">Modern Systems:</strong> Our integrated digital system makes locating,
-            managing, and reserving plots
-            easier than ever.
-        </p>
-        <p class="text-xl font-thin block mt-5 font-sans text-gray-700">
-            <strong class="font-semibold">Trusted by Families:</strong> A history of dedicated service to San Fernando
-            and nearby communities.
-        </p>
+        <div class="relative">
+
+            <p class="text-xl font-thin block mt-5 font-sans text-gray-700">
+                <strong class="font-semibold">Catholic Values:</strong> Operated under the guidance of the local parish
+                with
+                spiritual services
+                available
+            </p>
+            <p class="text-xl font-thin block mt-5 font-sans text-gray-700">
+                <strong class="font-semibold">Peaceful Environment:</strong> Landscaped gardens and prayer spaces ideal
+                for
+                reflection and
+                remembrance.
+            </p>
+            <p class="text-xl font-thin block mt-5 font-sans text-gray-700">
+                <strong class="font-semibold">Modern Systems:</strong> Our integrated digital system makes locating,
+                managing, and reserving plots
+                easier than ever.
+            </p>
+            <p class="text-xl font-thin block mt-5 font-sans text-gray-700">
+                <strong class="font-semibold">Trusted by Families:</strong> A history of dedicated service to San
+                Fernando
+                and nearby communities.
+            </p>
+        </div>
     </section>
-    <section class="bg-white py-5 my-10 w-full px-20 flex justify-center flex-col">
+    <section class="bg-white py-5 my-10 w-full px-20 flex items-center flex-col">
         <h1 class="block text-center text-gray-800 font-sans font-bold text-4xl">Visitation Information</h1>
-        <p class="text-xl font-thin block mt-5 font-sans text-gray-700">
-            <strong class="font-semibold">Operating Hours:</strong> Monday to Sunday – 7:00 AM to 6:00 PM
-        </p>
-        <p class="text-xl font-thin block mt-5 font-sans text-gray-700">
-            <strong class="font-semibold">Mass Schedules:</strong> First Saturday of the month – 8:00 AM (Memorial Mass)
-        </p>
-        <p class="text-xl font-thin block mt-5 font-sans text-gray-700">
-            <strong class="font-semibold">Location:</strong> Brgy. Baliti, City of San Fernando, Pampanga
-        </p>
+        <div class="relative">
+
+            <p class="text-xl font-thin block mt-5 font-sans text-gray-700">
+                <strong class="font-semibold">Operating Hours:</strong> Monday to Sunday – 7:00 AM to 6:00 PM
+            </p>
+            <p class="text-xl font-thin block mt-5 font-sans text-gray-700">
+                <strong class="font-semibold">Mass Schedules:</strong> First Saturday of the month – 8:00 AM (Memorial
+                Mass)
+            </p>
+            <p class="text-xl font-thin block mt-5 font-sans text-gray-700">
+                <strong class="font-semibold">Location:</strong> Brgy. Baliti, City of San Fernando, Pampanga
+            </p>
+        </div>
     </section>
-    <section class="bg-white py-5 my-10 w-full px-20 flex justify-center flex-col">
+    <section class="bg-white py-5 my-10 w-full px-20 flex items-center flex-col">
         <h1 id="contact" class="block text-center text-gray-800 font-sans font-bold text-4xl">Contact Us</h1>
-        <p class="text-2xl font-thin block mt-5 font-sans text-gray-700">
-            <strong class="font-semibold">Phone:</strong> 09956103234
-        </p>
-        <p class="text-2xl font-thin block mt-5 font-sans text-gray-700">
-            <strong class="font-semibold">Email:</strong> baliticatholiccemetery2025@gmail.com
-        </p>
+        <div class="relative">
+
+            <p class="text-2xl font-thin block mt-5 font-sans text-gray-700">
+                <strong class="font-semibold">Phone:</strong> 09956103234
+            </p>
+            <p class="text-2xl font-thin block mt-5 font-sans text-gray-700">
+                <strong class="font-semibold">Email:</strong> baliticatholiccemetery2025@gmail.com
+            </p>
+        </div>
     </section>
     <x-footer />
 </div>

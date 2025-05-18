@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\NewReservationRequest;
 use App\Models\Grave;
 use App\Models\Reservation;
+use Illuminate\Support\Facades\Session;
 
 class ReservationController extends Controller
 {
@@ -14,31 +15,25 @@ class ReservationController extends Controller
         return view('pages.admin.reservations');
     }
 
-    public function createReservation()
-    {
-        return view('pages.create-reservation');
-    }   
-
     public function storeReservation(NewReservationRequest $request)
     {
         try {
-            $validated = $request->validated();
             
-            $grave = Grave::where('grave_number', $validated['grave_number'])->first();
+            $grave = Grave::where('grave_number', $request->validated('grave_number'))->first();
             
             $reservation = Reservation::create([
-                'full_name' => $validated['full_name'],
-                'email' => $validated['email'],
-                'contact_number' => $validated['contact_number'],
-                'relationship' => $validated['relationship'],
+                'full_name' => $request->validated('full_name'),
+                'email' => $request->validated('email'),
+                'contact_number' => $request->validated('contact_number'),
+                'relationship' => $request->validated('relationship'),
                 'grave_id' => $grave->id,
-                'date_of_birth' => $validated['date_of_birth'],
-                'date_of_death' => $validated['date_of_death'],
-                'deceased_full_name' => $validated['deceased_full_name'],
-                'age' => $validated['age'],
-                'address' => $validated['address'],
-                'gender' => $validated['gender'],
-                'cause_of_death' => $validated['cause_of_death']
+                'date_of_birth' => $request->validated('date_of_birth'),
+                'date_of_death' => $request->validated('date_of_death'),
+                'deceased_full_name' => $request->validated('deceased_full_name'),
+                'age' => $request->validated('age'),
+                'address' => $request->validated('address'),
+                'gender' => $request->validated('gender'),
+                'cause_of_death' => $request->validated('cause_of_death')
             ]);
 
             $grave->update(['status' => 'reserved']);
@@ -53,6 +48,11 @@ class ReservationController extends Controller
         }
 
     }
+    public function createReservation()
+    {
+        return view('pages.create-reservation');
+    }   
+
 
 
     public function successReservation()

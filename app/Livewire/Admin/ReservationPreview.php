@@ -54,11 +54,14 @@ class ReservationPreview extends Component
                 'full_name' => $reservation->deceased_full_name,
                 'date_of_birth' => $reservation->date_of_birth,
                 'date_of_death' => $reservation->date_of_death,
-                
+                'cause_of_death' => $reservation->cause_of_death,
+                'age' => $reservation->age,
+                'address' => $reservation->address,
+                'gender' => $reservation->gender,
                 'grave_id' => $reservation->grave_id,
             ]);
             $reservation->delete();
-            // Mail::to($reservation->email)->send(new AcceptedReservation());
+            Mail::to($reservation->email)->send(new AcceptedReservation());
             session()->flash('message', 'Reservation approved successfully.');
         } else {
             session()->flash('error', 'Reservation not found.');
@@ -72,7 +75,7 @@ class ReservationPreview extends Component
         if ($reservation) {
             $reservation->grave->update(['status' => 'available']);
             
-            // Mail::to($reservation->email)->send(new RejectedReservation());
+            Mail::to($reservation->email)->send(new RejectedReservation());
             $reservation->delete();
             session()->flash('message', 'Reservation rejected successfully.');
         } else {

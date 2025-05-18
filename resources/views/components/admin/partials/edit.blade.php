@@ -1,8 +1,4 @@
-<!-- No surplus words or unnecessary actions. - Marcus Aurelius -->
-
-{{-- The best athlete wants his opponent at his best. --}}
-
-<form method="POST" action={{ route('admin.records.update', $record->id) }} class="w-full mt-5 relative">
+<form method="POST" action="{{ route('admin.records.update', $record->id) }}" class="w-full mt-5 relative">
     @csrf
     @method('PUT')
     <div class="mt-3 w-full">
@@ -13,31 +9,79 @@
         <x-form.input type="text" id="full_name" name="full_name" value="{{ $record->full_name }}"
             class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm" />
     </div>
+
+    <div class="mt-3 w-full">
+        @error('age')
+        <span class="text-red-500 text-sm">{{ $message }}</span>
+        @enderror
+        <label for="age" class="block font-sans text-xl">Age</label>
+        <x-form.input type="number" id="age" name="age" value="{{ old('age', $record->age) }}"
+            class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm" />
+    </div>
+
+    <div class="mt-3 w-full">
+        @error('address')
+        <span class="text-red-500 text-sm">{{ $message }}</span>
+        @enderror
+        <label for="address" class="block font-sans text-xl">Address</label>
+        <x-form.input type="text" id="address" name="address" value="{{ old('address', $record->address) }}"
+            class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm" />
+    </div>
+
+    <div class="mt-3 w-full">
+        @error('gender')
+        <span class="text-red-500 text-sm">{{ $message }}</span>
+        @enderror
+        <label for="gender" class="block font-sans text-xl">Gender</label>
+        <x-form.select id="gender" name="gender" class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm">
+            @if($record->gender === 'M')
+            <x-form.option selected value="M">Male</x-form.option>
+            <x-form.option value="F">Female</x-form.option>
+
+            @else
+            <x-form.option value="M">Male</x-form.option>
+            <x-form.option selected value="F">Female</x-form.option>
+            @endif
+        </x-form.select>
+    </div>
+
     <div class="w-full mt-3">
         @error('grave_number')
         <span class="text-red-500 text-sm">{{ $message }}</span>
         @enderror
         <label for="grave_number" class="block font-sans text-xl">Plot Number</label>
-        <x-form.input type="text" id="grave_number" name="grave_number" value="{{ $record->grave->grave_number }}"
-            class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm" />
-    </div>
-    <div class="w-full mt-3">
-        @error('born_date')
-        <span class="text-red-500 text-sm">{{ $message }}</span>
-        @enderror
-        <label for="born_date" class="block font-sans text-xl">Born Date</label>
-        <x-form.input type="date" id="born_date" name="born_date"
-            value="{{ old('born_date', $record->date_of_birth->format('Y-m-d')) }}"
+        <x-form.input type="text" id="grave_number" name="grave_number"
+            value="{{ old('grave_number', $record->grave->grave_number) }}"
             class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm" />
     </div>
 
     <div class="w-full mt-3">
-        @error('died_on')
+        @error('date_of_birth')
         <span class="text-red-500 text-sm">{{ $message }}</span>
         @enderror
-        <label for="died_on" class="block font-sans text-xl">Died On</label>
-        <x-form.input type="date" id="died_on" name="died_on"
-            value="{{ old('died_on', $record->date_of_death->format('Y-m-d')) }}"
+        <label for="date_of_birth" class="block font-sans text-xl">Date of Birth</label>
+        <x-form.input type="date" id="date_of_birth" name="date_of_birth"
+            value="{{ old('date_of_birth', $record->date_of_birth->format('Y-m-d')) }}"
+            class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm" />
+    </div>
+
+    <div class="w-full mt-3">
+        @error('date_of_death')
+        <span class="text-red-500 text-sm">{{ $message }}</span>
+        @enderror
+        <label for="date_of_death" class="block font-sans text-xl">Date of Death</label>
+        <x-form.input type="date" id="date_of_death" name="date_of_death"
+            value="{{ old('date_of_death', $record->date_of_death->format('Y-m-d')) }}"
+            class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm" />
+    </div>
+
+    <div class="mt-3 w-full">
+        @error('cause_of_death')
+        <span class="text-red-500 text-sm">{{ $message }}</span>
+        @enderror
+        <label for="cause_of_death" class="block font-sans text-xl">Cause of Death</label>
+        <x-form.input type="text" id="cause_of_death" name="cause_of_death"
+            value="{{ old('cause_of_death', $record->cause_of_death) }}"
             class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm" />
     </div>
 

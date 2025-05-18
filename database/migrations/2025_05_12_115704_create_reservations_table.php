@@ -26,6 +26,7 @@ return new class extends Migration
             $table->integer('age');
             $table->string('address');
             $table->enum('gender', ['M', 'F']);
+            $table->string('cause_of_death');
             $table->enum('status', ['pending', 'confirmed', 'cancelled'])->default('pending');
             $table->timestamps();
         });

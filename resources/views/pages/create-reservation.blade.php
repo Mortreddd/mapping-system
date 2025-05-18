@@ -29,7 +29,6 @@
                     </ul>
                 </div>
                 @endif
-
                 <form method="POST" action="{{ route('reservations.store') }}" class="w-full mt-5 relative">
                     @csrf
                     {{-- Full Name of the reserver --}}

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\GraveController;
 use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +19,7 @@ Route::group([], function() {
     Route::get('/pricing', fn() => view('pages.pricing'))->name('pricing');
     Route::get('/#contact', fn () => view('pages.contact'))->name('contact');
     Route::get('/reservations/new', [ReservationController::class, 'createReservation'])->name('reservations.new');
-    Route::post('/reservations/new', [ReservationController::class, 'storeReservation'])->name('reservations.store');
+    Route::post('/reservations/create', [ReservationController::class, 'storeReservation'])->name('reservations.store');
     Route::get('/reservations/success', [ReservationController::class, 'successReservation'])->name('reservations.success');
     Route::get('/rate-us', [FeedbackController::class, 'index'])->name('feedback.index');
     // Public grave details
@@ -37,10 +38,11 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/records/{id}', [DashboardController::class, 'show'])->name('admin.records.show');
     Route::put('/records/{id}', [DashboardController::class, 'update'])->name('admin.records.update');
-    Route::post('/records/new', [DashboardController::class, 'store'])->name('admin.records.store');
-
+    Route::post('/records/create', [DashboardController::class, 'store'])->name('admin.records.store');
     Route::get("/reservations", [ReservationController::class, 'index'])->name('admin.reservations.index');
-
+    Route::get('/galleries', [GalleryController::class, 'index'])->name('admin.galleries.index');
+    Route::get('/galleries/new', [GalleryController::class, 'create'])->name('admin.galleries.create');
+    Route::post('/galleries/create', [GalleryController::class, 'store'])->name('admin.galleries.store');
     Route::get('/feedback', [FeedbackController::class, 'show'])->name('admin.feedbacks');
     Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
 });

@@ -81,8 +81,12 @@ class DashboardController extends Controller
         $record->update([
             'full_name' => $request->input('full_name'),
             'grave_id' => $newGrave->id,
-            'date_of_birth' => $request->input('born_date'),
-            'date_of_death' => $request->input('died_on'),
+            'age' => $request->input('age'),
+            'cause_of_death' => $request->input('cause_of_death'),
+            'address' => $request->input('address'),
+            'gender' => $request->input('gender'),
+            'date_of_birth' => $request->input('date_of_birth'),
+            'date_of_death' => $request->input('date_of_death'),
         ]);
 
         return redirect()->route('admin.dashboard')->with('success', 'Deceased record updated successfully.');
